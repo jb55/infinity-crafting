@@ -2,13 +2,15 @@
 #define _CRAFT_COMPONENT_REPO_H_
 #pragma once
 
+#include "CComponent.h"
+
 CRAFTING_NAMESPACE
 
-class CComponentRepository
+class CComponentRepo
 {
 public:
-    CComponentRepository ();
-    virtual ~CComponentRepository ();
+    CComponentRepo() {};
+    virtual ~CComponentRepo() {};
 
     /**
      * The key type for component repositories, used for

@@ -2,12 +2,13 @@
 #define _CRAFTING_MEM_COMPONENT_REPOSITORY_H_
 #pragma once
 
+#include "CComponent.h"
 #include "CComponentRepo.h"
 #include <map>
 
 CRAFTING_NAMESPACE
 
-class CMemComponentRepo : public CComponentRepository
+class CMemComponentRepo : public CComponentRepo
 {
 public:
     CMemComponentRepo();

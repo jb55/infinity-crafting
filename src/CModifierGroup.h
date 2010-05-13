@@ -2,6 +2,10 @@
 #define _CRAFT_MODIFIER_GROUP_H_
 #pragma once
 
+#include "CModifier.h"
+#include "CComponent.h"
+#include <vector>
+
 CRAFTING_NAMESPACE
 
 class CModifierGroup 
@@ -16,7 +20,8 @@ public:
     CComponent transformComponent(const CComponent &component);
 
 private:
-    std::vector<CModifier> m_modifiers;
+    typedef std::vector<CModifier> ModList;
+    ModList m_modifiers;
 };
 
 

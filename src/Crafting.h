@@ -79,7 +79,7 @@ enum StatType
     kPowerStorageConvRatio,     //< Power storage conversion ratio
     kReactorEmission,           //< Reactor emission per %
     kNumStats                   //< Number of modifiers
-}
+};
 
 /* Mask defining different component modifier types */
 enum StatTypeFlags
@@ -97,6 +97,8 @@ enum StatTypeFlags
     kPowerStorageConvRatioFlag    = 1 << kPowerStorageConvRatio,
     kReactorEmissionFlag          = 1 << kReactorEmission
 };
+
+typedef unsigned long long uint64_t;
 
 CRAFTING_NAMESPACE_END
 

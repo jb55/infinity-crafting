@@ -11,8 +11,8 @@ public:
     CComponent();
     ~CComponent();
     
-    float getBaseStat(StatType stat)
-    void  setBaseStat(StatType stat, float value)
+    float getBaseStat(StatType stat);
+    void  setBaseStat(StatType stat, float value);
 
 private:
 

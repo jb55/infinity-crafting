@@ -2,6 +2,8 @@
 #define _CRAFT_MODIFIER_H_
 #pragma once
 
+#include "Crafting.h"
+
 CRAFTING_NAMESPACE
 
 class CModifier 
@@ -10,11 +12,11 @@ public:
     CModifier(StatType modifierType, float value);
     ~CModifier();
 
-    int getModifierType() const;
+    StatType getModifierType() const;
     float getModifierValue() const;
 
 private:
-    int m_modType;
+    StatType m_modType;
     float m_value;
 };
 
