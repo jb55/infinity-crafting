@@ -9,9 +9,10 @@ class CComponent
 {
 public:
     CComponent();
+    CComponent(float *stats, int count);
     ~CComponent();
     
-    float getBaseStat(StatType stat);
+    float getBaseStat(StatType stat) const;
     void  setBaseStat(StatType stat, float value);
 
 private:

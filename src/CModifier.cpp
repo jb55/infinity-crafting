@@ -3,7 +3,7 @@
 
 CRAFTING_NAMESPACE
 
-CModifier::CModifier(StatType type, float value)
+CModifier::CModifier(StatTypeFlags type, float value)
     : m_modType(type), m_value(value)
 {
 }
@@ -11,7 +11,7 @@ CModifier::CModifier(StatType type, float value)
 CModifier::~CModifier() {
 }
 
-StatType CModifier::getModifierType() const {
+StatTypeFlags CModifier::getModifierType() const {
     return m_modType;
 }
 

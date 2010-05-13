@@ -8,10 +8,16 @@ void CModifierGroup::mutateComponent(CComponent *component)
     ModList::const_iterator i = m_modifiers.begin();
     for (; i != m_modifiers.end(); ++i) {
         const CModifier &mod = *i;
-        const StatType modType = mod.getModifierType();
+        const StatTypeFlags modType = mod.getModifierType();
         const float modValue = mod.getModifierValue();
-        const float currentValue = component->getBaseStat(modType);
-        component->setBaseStat(modType, currentValue * modValue);
+        for (int j = 0, k = 0; j < kNumStats; j++) {
+            k = 1 << j;
+            if (k & modType) {
+                const StatType type = static_cast<StatType>(j);
+                const float currentValue = component->getBaseStat(type);
+                component->setBaseStat(type, currentValue * modValue);
+            }
+        }
     }
 }
 

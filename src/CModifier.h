@@ -9,14 +9,14 @@ CRAFTING_NAMESPACE
 class CModifier 
 {
 public:
-    CModifier(StatType modifierType, float value);
+    CModifier(StatTypeFlags modifierTypes, float value);
     ~CModifier();
 
-    StatType getModifierType() const;
+    StatTypeFlags getModifierType() const;
     float getModifierValue() const;
 
 private:
-    StatType m_modType;
+    StatTypeFlags m_modType;
     float m_value;
 };
 
