@@ -1,0 +1,7 @@
+#include "CComponent.h"
+
+CRAFTING_NAMESPACE
+
+
+
+CRAFTING_NAMESPACE_END
