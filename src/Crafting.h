@@ -81,6 +81,23 @@ enum ModifierType
     kNumModifiers               //< Number of modifiers
 }
 
+/* Mask defining different component modifier types */
+enum ModifierTypeFlags
+{
+    kArmorThicknessFlag           = 1 << kArmorThickness,
+    kHitpointsFlag                = 1 << kHitpoints,
+    kHullReflectivenessFlag       = 1 << kHullReflectiveness,
+    kMassFlag                     = 1 << kMass,
+    kMaxInstalledEquipSizeFlag    = 1 << kMaxInstalledEquipSize,
+    kCargoSpaceFlag               = 1 << kCargoSpace,
+    kPowerGenerationRateFlag      = 1 << kPowerGenerationRate,
+    kPowerGenerationFuelBurnFlag  = 1 << kPowerGenerationFuelBurn,
+    kPowerStorageCapacityFlag     = 1 << kPowerStorageCapacity,
+    kPowerStorageRechargeRateFlag = 1 << kPowerStorageRechargeRate,
+    kPowerStorageConvRatioFlag    = 1 << kPowerStorageConvRatio,
+    kReactorEmissionFlag          = 1 << kReactorEmission
+};
+
 CRAFTING_NAMESPACE_END
 
 #endif /* _CRAFTING_SYSTEM_H_ */
