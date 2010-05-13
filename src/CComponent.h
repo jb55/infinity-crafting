@@ -10,8 +10,13 @@ class CComponent
 public:
     CComponent();
     ~CComponent();
+    
+    float getBaseStat(StatType stat)
+    void  setBaseStat(StatType stat, float value)
 
 private:
+
+    float m_baseStats[kNumStats];
 };
 
 CRAFTING_NAMESPACE_END

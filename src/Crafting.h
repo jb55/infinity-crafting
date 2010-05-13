@@ -64,7 +64,7 @@
 
 CRAFTING_NAMESPACE
 
-enum ModifierType
+enum StatType
 {
     kArmorThickness,            //< Armor thickness
     kHitpoints,                 //< Hitpoints
@@ -78,11 +78,11 @@ enum ModifierType
     kPowerStorageRechargeRate,  //< Power storage recharge rate
     kPowerStorageConvRatio,     //< Power storage conversion ratio
     kReactorEmission,           //< Reactor emission per %
-    kNumModifiers               //< Number of modifiers
+    kNumStats                   //< Number of modifiers
 }
 
 /* Mask defining different component modifier types */
-enum ModifierTypeFlags
+enum StatTypeFlags
 {
     kArmorThicknessFlag           = 1 << kArmorThickness,
     kHitpointsFlag                = 1 << kHitpoints,
