@@ -19,11 +19,11 @@ CComponent::CComponent(float *stats, int num)
 CComponent::~CComponent() {
 }
 
-void CComponent::setBaseStat(StatType stat, float value) {
+void CComponent::setBaseStat(ModifierType stat, float value) {
     m_baseStats[stat] = value;
 }
 
-float CComponent::getBaseStat(StatType stat) const {
+float CComponent::getBaseStat(ModifierType stat) const {
     return m_baseStats[stat];
 }
 

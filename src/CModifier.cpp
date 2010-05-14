@@ -3,7 +3,10 @@
 
 CRAFTING_NAMESPACE
 
-CModifier::CModifier(StatType type, float value)
+CModifier::CModifier() {
+}
+
+CModifier::CModifier(ModifierType type, float value)
     : m_modType(type), m_value(value)
 {
 }
@@ -13,14 +16,14 @@ CModifier::~CModifier() {
 
 void CModifier::getMods(float *mods, unsigned *modMask)
 {
-    const StatType modType = this->getModifierType();
+    const ModifierType modType = this->getModifierType();
     mods[modType] = this->getModifierValue();
     *modMask |= 1 << modType;
 }
 
 void CModifier::mutateComponent(CComponent *component)
 {
-    const StatType modType = this->getModifierType();
+    const ModifierType modType = this->getModifierType();
     const float modValue = this->getModifierValue();
     const float currentValue = component->getBaseStat(modType);
     const float newValue = currentValue + (currentValue * modValue);
@@ -34,8 +37,16 @@ CComponent CModifier::transformComponent(const CComponent &component)
     return trans;
 }
 
-StatType CModifier::getModifierType() const {
+ModifierType CModifier::getModifierType() const {
     return m_modType;
+}
+
+void CModifier::setModifierType(ModifierType type) {
+    m_modType = type;
+}
+
+void CModifier::setModifierValue(float value) {
+    m_value = value;
 }
 
 float CModifier::getModifierValue() const {

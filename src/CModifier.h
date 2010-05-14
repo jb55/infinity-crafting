@@ -11,18 +11,21 @@ CRAFTING_NAMESPACE
 class CModifier : public CAbstractModifier
 {
 public:
-    CModifier(StatType modifierTypes, float value);
+    CModifier(ModifierType modifierTypes, float value);
+    CModifier();
     virtual ~CModifier();
 
     virtual void getMods(float *mods, unsigned *modMask);
     virtual void mutateComponent(CComponent *component);
     virtual CComponent transformComponent(const CComponent &component);
 
-    StatType getModifierType() const;
+    ModifierType getModifierType() const;
     float getModifierValue() const;
+    void setModifierType(ModifierType type);
+    void setModifierValue(float value);
 
 private:
-    StatType m_modType;
+    ModifierType m_modType;
     float m_value;
 };
 

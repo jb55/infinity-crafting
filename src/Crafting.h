@@ -63,7 +63,7 @@
 
 CRAFTING_NAMESPACE
 
-enum StatType
+enum ModifierType
 {
     kArmorThickness,            //< Armor thickness
     kHitpoints,                 //< Hitpoints
@@ -83,7 +83,7 @@ enum StatType
 };
 
 /* Mask defining different component modifier types */
-enum StatTypeFlags
+enum ModifierTypeFlags
 {
     kArmorThicknessFlag           = 1 << kArmorThickness,
     kHitpointsFlag                = 1 << kHitpoints,
@@ -103,6 +103,8 @@ enum StatTypeFlags
 };
 
 typedef unsigned long long uint64_t;
+
+extern const float kStatSigns[kNumStats];
 
 CRAFTING_NAMESPACE_END
 

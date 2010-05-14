@@ -12,8 +12,8 @@ public:
     CComponent(float *stats, int count);
     ~CComponent();
     
-    float getBaseStat(StatType stat) const;
-    void  setBaseStat(StatType stat, float value);
+    float getBaseStat(ModifierType stat) const;
+    void  setBaseStat(ModifierType stat, float value);
 
 private:
 

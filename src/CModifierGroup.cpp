@@ -18,13 +18,14 @@ void CModifierGroup::mutateComponent(CComponent *component)
     this->getMods(modSum, &modMask);
 
     for (unsigned i = 0; modMask && i < kNumStats; i++, modMask >>= 1) {
-        const StatType type = static_cast<StatType>(i);
+        const ModifierType type = static_cast<ModifierType>(i);
         CModifier sumMod(type, modSum[i]);
         sumMod.mutateComponent(component);
     }
 }
 
-void CModifierGroup::getMods(float *mods, unsigned *modMask) {
+void CModifierGroup::getMods(float *mods, unsigned *modMask) 
+{
     ModList::iterator mod = m_modifiers.begin();
     float subMods[kNumStats] = {0.0};
     unsigned subModMask = 0;
