@@ -12,37 +12,32 @@ CModifierGroup::CModifierGroup() {
 
 void CModifierGroup::mutateComponent(CComponent *component)
 {
-    ModList::const_iterator mod = m_modifiers.begin();
-
-    /**
-     * For increased performance this paragraph can be replaced
-     * by introducing state. You can add the modSums when adding
-     * and removing new modifiers. This is a lazy approach and
-     * will be less buggy.
-     */
     float modSum[kNumStats] = {0.0};
     unsigned modMask = 0;
-    for (; mod != m_modifiers.end(); ++mod) {
-        unsigned types = mod->getModifierTypes();
-        for (int i = 0; types && i < kNumStats; i++, types >>= 1) {
-            if (types & 1) {
-                modSum[i] += mod->getModifierValue();
-                modMask |= 1 << i;
-            }
-        }
-    }
 
-    for (int i = 0; modMask && i < kNumStats; i++, modMask >>= 1) {
-        const StatTypeFlags typeFlag = static_cast<StatTypeFlags>(1 << i);
-        std::cout << modSum[i] << std::endl;
-        CModifier sumMod(typeFlag, modSum[i]);
+    this->getMods(modSum, &modMask);
+
+    for (unsigned i = 0; modMask && i < kNumStats; i++, modMask >>= 1) {
+        const StatType type = static_cast<StatType>(i);
+        CModifier sumMod(type, modSum[i]);
         sumMod.mutateComponent(component);
     }
 }
 
-CModifierGroup& CModifierGroup::mergeGroup(const CModifierGroup &group)
-{
-    return *this;
+void CModifierGroup::getMods(float *mods, unsigned *modMask) {
+    ModList::iterator mod = m_modifiers.begin();
+    float subMods[kNumStats] = {0.0};
+    unsigned subModMask = 0;
+    for (; mod != m_modifiers.end(); ++mod) {
+        (*mod)->getMods(subMods, &subModMask);
+        for (int i = 0; subModMask && i < kNumStats; i++, subModMask >>= 1) {
+            if (subModMask & 1) {
+                mods[i] += subMods[i];
+                *modMask |= 1 << i;
+                subMods[i] = 0.0;
+            }
+        }
+    }
 }
 
 CComponent CModifierGroup::transformComponent(const CComponent &component)
@@ -52,21 +47,26 @@ CComponent CModifierGroup::transformComponent(const CComponent &component)
     return trans;
 }
 
-CModifierGroup& CModifierGroup::removeModifier(const CModifier &modifier) {
+// implement equality compare for CComponentTransformer
+CModifierGroup& CModifierGroup::removeModifier(const CModifier &modifier)
+{
+#if 0
     ModList::iterator i = m_modifiers.begin();
     for (; i != m_modifiers.end(); ++i) {
-        const CModifier *lhs = &*i;
+        const CModifier *lhs = *i;
         const CModifier *rhs = &modifier;
-        if (lhs->getModifierTypes() == rhs->getModifierTypes() &&
+        if (lhs->getModifierType() == rhs->getModifierType() &&
             lhs->getModifierValue() == rhs->getModifierValue())
         {
             m_modifiers.erase(i);
             return *this;
         }
     }
+#endif
+    return *this;
 }
 
-CModifierGroup& CModifierGroup::addModifier(const CModifier &modifier) {
+CModifierGroup& CModifierGroup::addModifier(CAbstractModifier *modifier) {
     m_modifiers.push_back(modifier);
     return *this;
 }

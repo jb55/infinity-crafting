@@ -4,23 +4,25 @@
 
 #include "Crafting.h"
 #include "CComponent.h"
+#include "CAbstractModifier.h"
 
 CRAFTING_NAMESPACE
 
-class CModifier 
+class CModifier : public CAbstractModifier
 {
 public:
-    CModifier(StatTypeFlags modifierTypes, float value);
-    ~CModifier();
+    CModifier(StatType modifierTypes, float value);
+    virtual ~CModifier();
 
-    void mutateComponent(CComponent *component) const;
-    CComponent transformComponent(const CComponent &component) const;
+    virtual void getMods(float *mods, unsigned *modMask);
+    virtual void mutateComponent(CComponent *component);
+    virtual CComponent transformComponent(const CComponent &component);
 
-    StatTypeFlags getModifierTypes() const;
+    StatType getModifierType() const;
     float getModifierValue() const;
 
 private:
-    StatTypeFlags m_modType;
+    StatType m_modType;
     float m_value;
 };
 

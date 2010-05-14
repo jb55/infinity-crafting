@@ -12,7 +12,7 @@ std::ostream& operator<<(std::ostream& os, const CComponent& c)
 {
     os << "CComponent ";
     for (int i = 0; i < kNumStats; i++) {
-        os << c.getBaseStat(static_cast<StatType>(i)) << " ";
+        os << c.getBaseStat(static_cast<StatType>(i)) << ", ";
     }
     return os;
 }
@@ -24,22 +24,28 @@ int main(void)
     CComponent component(stats, kNumStats);
 
     // component mod
-    CModifier cArmor(kArmorThicknessFlag, 0.15);
-    CModifier cHitpoints(kHitpointsFlag, 0.04);
-    CModifier cReflectiveness(kHullReflectivenessFlag, 0.12);
-    CModifier cMass(kMassFlag, 0.08);
-    CModifier cOverallQuality(kAllStats, 0.37);
+    CModifier cArmor(kArmorThickness, 0.15);
+    CModifier cHitpoints(kHitpoints, 0.04);
+    CModifier cReflectiveness(kHullReflectiveness, 0.12);
+    CModifier cMass(kMass, 0.08);
+    //CModifier cOverallQuality(kAllStats, 0.37);
 
     CModifierGroup group;
       group
-        .addModifier(cArmor)
-        .addModifier(cHitpoints)
-        .addModifier(cReflectiveness)
-        .addModifier(cMass)
-        .addModifier(cOverallQuality);
+        .addModifier(&cArmor)
+        .addModifier(&cHitpoints)
+        .addModifier(&cReflectiveness)
+        .addModifier(&cMass);
+
+    CModifierGroup applyTwice;
+      applyTwice
+        .addModifier(&group)
+        .addModifier(&group);
 
     std::cout << component << std::endl;
     CComponent newComponent = group.transformComponent(component);
+    std::cout << newComponent << std::endl;
+    newComponent = applyTwice.transformComponent(component);
     std::cout << newComponent << std::endl;
 
     return 0;

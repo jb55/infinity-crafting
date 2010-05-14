@@ -8,22 +8,22 @@
 
 CRAFTING_NAMESPACE
 
-class CModifierGroup 
+class CModifierGroup : public CAbstractModifier
 {
 public:
     CModifierGroup();
-    ~CModifierGroup();
+    virtual ~CModifierGroup();
 
-    typedef std::vector<CModifier> ModList;
+    typedef std::vector<CAbstractModifier*> ModList;
 
-    CModifierGroup& addModifier(const CModifier &modifier);
+    CModifierGroup& addModifier(CAbstractModifier *modifier);
     CModifierGroup& removeModifier(const CModifier &modifier);
-    CModifierGroup& mergeGroup(const CModifierGroup &group);
 
     const ModList& getModifiers() const;
 
-    void mutateComponent(CComponent *component);
-    CComponent transformComponent(const CComponent &component);
+    virtual void getMods(float *mods, unsigned *modMask);
+    virtual void mutateComponent(CComponent *component);
+    virtual CComponent transformComponent(const CComponent &component);
 
 private:
     ModList m_modifiers;

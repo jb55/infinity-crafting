@@ -3,7 +3,7 @@
 
 CRAFTING_NAMESPACE
 
-CModifier::CModifier(StatTypeFlags type, float value)
+CModifier::CModifier(StatType type, float value)
     : m_modType(type), m_value(value)
 {
 }
@@ -11,29 +11,30 @@ CModifier::CModifier(StatTypeFlags type, float value)
 CModifier::~CModifier() {
 }
 
-void CModifier::mutateComponent(CComponent *component) const 
+void CModifier::getMods(float *mods, unsigned *modMask)
 {
-    unsigned modType = this->getModifierTypes();
-    const float modValue = this->getModifierValue();
-
-    for (int j = 0, k = 0; modType && j < kNumStats; j++, modType >>= 1) {
-        if (modType & 1) {
-            const StatType type = static_cast<StatType>(j);
-            const float currentValue = component->getBaseStat(type);
-            const float newValue = currentValue + (currentValue * modValue);
-            component->setBaseStat(type, newValue);
-        }
-    }
+    const StatType modType = this->getModifierType();
+    mods[modType] = this->getModifierValue();
+    *modMask |= 1 << modType;
 }
 
-CComponent CModifier::transformComponent(const CComponent &component) const 
+void CModifier::mutateComponent(CComponent *component)
+{
+    const StatType modType = this->getModifierType();
+    const float modValue = this->getModifierValue();
+    const float currentValue = component->getBaseStat(modType);
+    const float newValue = currentValue + (currentValue * modValue);
+    component->setBaseStat(modType, newValue);
+}
+
+CComponent CModifier::transformComponent(const CComponent &component)
 {
     CComponent trans(component);
     mutateComponent(&trans);
     return trans;
 }
 
-StatTypeFlags CModifier::getModifierTypes() const {
+StatType CModifier::getModifierType() const {
     return m_modType;
 }
 
