@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Crafting.h"
+#include "CComponent.h"
 
 CRAFTING_NAMESPACE
 
@@ -12,7 +13,10 @@ public:
     CModifier(StatTypeFlags modifierTypes, float value);
     ~CModifier();
 
-    StatTypeFlags getModifierType() const;
+    void mutateComponent(CComponent *component) const;
+    CComponent transformComponent(const CComponent &component) const;
+
+    StatTypeFlags getModifierTypes() const;
     float getModifierValue() const;
 
 private:

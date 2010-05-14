@@ -73,10 +73,12 @@ enum StatType
     kCargoSpace,                //< Max item size in cargo
     kPowerGenerationRate,       //< Power generation rate
     kPowerGenerationFuelBurn,   //< Power generation fuel consumption per %
+    kReactorEmission,           //< Reactor emission per %
     kPowerStorageCapacity,      //< Power storage capacity
     kPowerStorageRechargeRate,  //< Power storage recharge rate
     kPowerStorageConvRatio,     //< Power storage conversion ratio
-    kReactorEmission,           //< Reactor emission per %
+    kShieldHitpoints,           //< Shield hitpoints
+    kShieldPowerConsumption,    //< Shield power consumption
     kNumStats                   //< Number of modifiers
 };
 
@@ -91,10 +93,13 @@ enum StatTypeFlags
     kCargoSpaceFlag               = 1 << kCargoSpace,
     kPowerGenerationRateFlag      = 1 << kPowerGenerationRate,
     kPowerGenerationFuelBurnFlag  = 1 << kPowerGenerationFuelBurn,
+    kReactorEmissionFlag          = 1 << kReactorEmission,
     kPowerStorageCapacityFlag     = 1 << kPowerStorageCapacity,
     kPowerStorageRechargeRateFlag = 1 << kPowerStorageRechargeRate,
     kPowerStorageConvRatioFlag    = 1 << kPowerStorageConvRatio,
-    kReactorEmissionFlag          = 1 << kReactorEmission
+    kShieldHitpointsFlag          = 1 << kShieldHitpoints,
+    kShieldPowerConsumptionFlag   = 1 << kShieldPowerConsumption,
+    kAllStats                     = 0xFFFFFFFF
 };
 
 typedef unsigned long long uint64_t;

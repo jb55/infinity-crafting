@@ -14,13 +14,18 @@ public:
     CModifierGroup();
     ~CModifierGroup();
 
-    void addModifier(const CModifier &modifier);
-    void removeModifier(const CModifier &modifier);
+    typedef std::vector<CModifier> ModList;
+
+    CModifierGroup& addModifier(const CModifier &modifier);
+    CModifierGroup& removeModifier(const CModifier &modifier);
+    CModifierGroup& mergeGroup(const CModifierGroup &group);
+
+    const ModList& getModifiers() const;
+
     void mutateComponent(CComponent *component);
     CComponent transformComponent(const CComponent &component);
 
 private:
-    typedef std::vector<CModifier> ModList;
     ModList m_modifiers;
 };
 
