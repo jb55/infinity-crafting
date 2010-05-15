@@ -3,7 +3,6 @@
 #pragma once
 
 #include "Crafting.h"
-#include "CComponent.h"
 #include "CAbstractModifier.h"
 
 CRAFTING_NAMESPACE
@@ -15,14 +14,14 @@ public:
     CModifier();
     virtual ~CModifier();
 
-    virtual void getMods(float *mods, unsigned *modMask);
-    virtual void mutateComponent(CComponent *component);
-    virtual CComponent transformComponent(const CComponent &component);
+    virtual float getRawModifier(ModifierType type);
+    virtual void getRawModifiers(float *mods, unsigned *modMask);
 
-    ModifierType getModifierType() const;
-    float getModifierValue() const;
-    void setModifierType(ModifierType type);
-    void setModifierValue(float value);
+    ModifierType getType() const;
+    float getValue() const;
+
+    void setValue(float value);
+    void setType(ModifierType type);
 
 private:
     ModifierType m_modType;

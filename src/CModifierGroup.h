@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CModifier.h"
-#include "CComponent.h"
 #include <vector>
 
 CRAFTING_NAMESPACE
@@ -16,16 +15,20 @@ public:
 
     typedef std::vector<CAbstractModifier*> ModList;
 
+    CModifierGroup& addModifier(const CModifier &modifier);
     CModifierGroup& addModifier(CAbstractModifier *modifier);
     CModifierGroup& removeModifier(const CModifier &modifier);
 
     const ModList& getModifiers() const;
 
-    virtual void getMods(float *mods, unsigned *modMask);
-    virtual void mutateComponent(CComponent *component);
-    virtual CComponent transformComponent(const CComponent &component);
+    virtual float getRawModifier(ModifierType type);
+    virtual void getRawModifiers(float *mods, unsigned *modMask);
 
 private:
+
+    typedef std::vector<CModifier*> StoredModList;
+
+    StoredModList m_storedModifiers;
     ModList m_modifiers;
 };
 

@@ -20,11 +20,10 @@ CPointsModifier::CPointsModifier(
 
     std::cout << m_speed << " " << m_efficiency << " " << m_quality << std::endl;
 
-    for (int i = 0; i < kNumStats; i++) {
+    for (int i = 0; i < kNumMods; i++) {
+        const float value = m_quality * kStatSigns[i];
         const ModifierType type = static_cast<ModifierType>(i);
-        m_modifiers[i].setModifierType(type);
-        m_modifiers[i].setModifierValue(m_quality * kStatSigns[type]);
-        addModifier(&m_modifiers[i]);
+        addModifier(CModifier(type, value));
     }
 }
 

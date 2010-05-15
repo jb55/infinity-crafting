@@ -79,7 +79,7 @@ enum ModifierType
     kPowerStorageConvRatio,     //< Power storage conversion ratio
     kShieldHitpoints,           //< Shield hitpoints
     kShieldPowerConsumption,    //< Shield power consumption
-    kNumStats                   //< Number of modifiers
+    kNumMods                    //< Number of modifiers
 };
 
 /* Mask defining different component modifier types */
@@ -104,7 +104,7 @@ enum ModifierTypeFlags
 
 typedef unsigned long long uint64_t;
 
-extern const float kStatSigns[kNumStats];
+extern const float kStatSigns[kNumMods];
 
 CRAFTING_NAMESPACE_END
 

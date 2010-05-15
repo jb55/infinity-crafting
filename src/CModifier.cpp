@@ -14,42 +14,33 @@ CModifier::CModifier(ModifierType type, float value)
 CModifier::~CModifier() {
 }
 
-void CModifier::getMods(float *mods, unsigned *modMask)
+void CModifier::getRawModifiers(float *mods, unsigned *modMask)
 {
-    const ModifierType modType = this->getModifierType();
-    mods[modType] = this->getModifierValue();
+    const ModifierType modType = this->getType();
+    mods[modType] = this->getValue();
     *modMask |= 1 << modType;
 }
 
-void CModifier::mutateComponent(CComponent *component)
+float CModifier::getRawModifier(ModifierType type) 
 {
-    const ModifierType modType = this->getModifierType();
-    const float modValue = this->getModifierValue();
-    const float currentValue = component->getBaseStat(modType);
-    const float newValue = currentValue + (currentValue * modValue);
-    component->setBaseStat(modType, newValue);
+    if (type != this->getType())
+        return 0.0;
+    return this->getValue();
 }
 
-CComponent CModifier::transformComponent(const CComponent &component)
-{
-    CComponent trans(component);
-    mutateComponent(&trans);
-    return trans;
-}
-
-ModifierType CModifier::getModifierType() const {
+ModifierType CModifier::getType() const {
     return m_modType;
 }
 
-void CModifier::setModifierType(ModifierType type) {
+void CModifier::setType(ModifierType type) {
     m_modType = type;
 }
 
-void CModifier::setModifierValue(float value) {
+void CModifier::setValue(float value) {
     m_value = value;
 }
 
-float CModifier::getModifierValue() const {
+float CModifier::getValue() const {
     return m_value;
 }
 

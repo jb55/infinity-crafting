@@ -7,9 +7,8 @@ CRAFTING_NAMESPACE
 class CAbstractModifier
 {
 public:
-    virtual void getMods(float *mods, unsigned *modMask) = 0;
-    virtual void mutateComponent(CComponent *component) = 0;
-    virtual CComponent transformComponent(const CComponent &component) = 0;
+    virtual float getRawModifier(ModifierType type) = 0;
+    virtual void getRawModifiers(float *mods, unsigned *modMask) = 0;
 };
 
 CRAFTING_NAMESPACE_END

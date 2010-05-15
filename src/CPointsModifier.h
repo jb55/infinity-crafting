@@ -24,7 +24,6 @@ public:
     float getQuality() const;
 
 private:
-    CModifier m_modifiers[kNumStats];
     float m_speed, m_efficiency, m_quality;
 
     static float defaultSpeedCalc(int points);

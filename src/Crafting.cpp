@@ -3,7 +3,7 @@
 
 CRAFTING_NAMESPACE
 
-const float kStatSigns[kNumStats] = {
+const float kStatSigns[kNumMods] = {
     1,
     1,
     -1,
