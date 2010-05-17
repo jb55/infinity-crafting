@@ -6,6 +6,11 @@
 
 CRAFTING_NAMESPACE
 
+/**
+ * @class CPointsModifier
+ * @brief An example modifier group, associated with a component
+ *        in the crafting system.
+ */
 class CComponentModifier : public CModifierGroup
 {
 public:

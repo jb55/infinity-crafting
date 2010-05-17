@@ -8,6 +8,11 @@
 
 CRAFTING_NAMESPACE
 
+/**
+ * @class CItem
+ * @brief An example item class that uses the CModifierGroup class to modify
+ *        its base stats.
+ */
 class CItem 
 {
 public:

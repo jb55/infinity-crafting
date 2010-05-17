@@ -7,6 +7,11 @@
 
 CRAFTING_NAMESPACE
 
+/**
+ * @class CPointsModifier
+ * @brief An example modifier group, takes 3 point values
+ *        and generates modifiers.
+ */
 class CPointsModifier : public CModifierGroup
 {
 public:
