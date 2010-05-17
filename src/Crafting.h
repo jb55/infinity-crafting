@@ -6,7 +6,8 @@
  * I hereby grant Flavien Brebion or his descendants to do whatever he wants 
  * with the following code. Credit would be pretty cool, but it's not required.
  *
- * Created by Bill Casarin (jb@jb55.com)
+ * Designed by CutterJohn
+ * Implemented by Bill Casarin (jb@jb55.com)
  */
 
 /**
