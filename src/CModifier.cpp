@@ -14,7 +14,7 @@ CModifier::CModifier(ModifierType type, float value)
 CModifier::~CModifier() {
 }
 
-void CModifier::getRawModifiers(float *mods, unsigned *modMask)
+void CModifier::getRawModifiers(float mods[kNumMods], unsigned *modMask)
 {
     const ModifierType modType = this->getType();
     mods[modType] = this->getValue();

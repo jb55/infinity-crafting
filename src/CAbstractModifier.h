@@ -8,7 +8,7 @@ class CAbstractModifier
 {
 public:
     virtual float getRawModifier(ModifierType type) = 0;
-    virtual void getRawModifiers(float *mods, unsigned *modMask) = 0;
+    virtual void getRawModifiers(float mods[kNumMods], unsigned *modMask) = 0;
 };
 
 CRAFTING_NAMESPACE_END

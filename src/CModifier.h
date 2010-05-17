@@ -15,7 +15,7 @@ public:
     virtual ~CModifier();
 
     virtual float getRawModifier(ModifierType type);
-    virtual void getRawModifiers(float *mods, unsigned *modMask);
+    virtual void getRawModifiers(float mods[kNumMods], unsigned *modMask);
 
     ModifierType getType() const;
     float getValue() const;

@@ -2,9 +2,10 @@ FILE(GLOB CRAFT_SRCS *.cpp)
 FILE(GLOB CRAFT_HDRS *.h)
 
 ADD_LIBRARY( 
-  crafting STATIC 
+  crafting SHARED 
   ${CRAFT_SRCS}
   ${CRAFT_HDRS}
 )
 
 ADD_SUBDIRECTORY(tests)
+ADD_SUBDIRECTORY(python)

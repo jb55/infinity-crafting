@@ -27,7 +27,7 @@ const CModifierGroup::ModList &CModifierGroup::getModifiers() const {
     return m_modifiers;
 }
 
-void CModifierGroup::getRawModifiers(float *mods, unsigned *modMask) 
+void CModifierGroup::getRawModifiers(float mods[kNumMods], unsigned *modMask) 
 {
     // TODO: Performance - memoize this when the modifiers haven't changed
 

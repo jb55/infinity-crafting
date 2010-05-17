@@ -18,8 +18,6 @@ CPointsModifier::CPointsModifier(
     m_efficiency = efficiencyFn(efficiencyPoints);
     m_quality = qualityFn(qualityPoints);
 
-    std::cout << m_speed << " " << m_efficiency << " " << m_quality << std::endl;
-
     for (int i = 0; i < kNumMods; i++) {
         const float value = m_quality * kStatSigns[i];
         const ModifierType type = static_cast<ModifierType>(i);

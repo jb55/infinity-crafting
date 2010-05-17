@@ -22,7 +22,7 @@ public:
     const ModList& getModifiers() const;
 
     virtual float getRawModifier(ModifierType type);
-    virtual void getRawModifiers(float *mods, unsigned *modMask);
+    virtual void getRawModifiers(float mods[kNumMods], unsigned *modMask);
 
 private:
 
